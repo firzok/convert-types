@@ -1,51 +1,59 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import Brightness4Icon from "@material-ui/icons/Brightness4";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import blue from "@material-ui/core/colors/blue";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
-const theme = createMuiTheme({
-  palette: {
-    primary: blue,
-    secondary: {
-      main: "#ffffff"
-    }
-  }
-});
+import React, { useState } from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  Container,
+  Row,
+  Col,
+  Button,
+  Nav,
+  Card,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
-  const classes = useStyles();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const toggle = () => setDropdownOpen(prevState => !prevState);
   return (
-    <ThemeProvider theme={theme}>
-      <AppBar position="static" color="primary">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            Convert this to that
-          </Typography>
-          <IconButton
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            color="inherit"
-          >
-            <Brightness4Icon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </ThemeProvider>
+    <div>
+      <Row>
+        <Col>
+          <Navbar color="light" light expand="md">
+            <NavbarBrand href="/">Convert this to that</NavbarBrand>
+            <Nav className="mr-auto" navbar />
+            <Button>
+              <FontAwesomeIcon icon={["fas", "adjust"]} />
+            </Button>
+          </Navbar>
+        </Col>
+      </Row>
+
+      <Container fluid="sm" style={{ marginTop: 40 }}>
+        <Card body style={{ padding: 50 }}>
+          <Row>
+            <Col md={{ size: 3, offset: 5 }}>
+              <Dropdown size="md" isOpen={dropdownOpen} toggle={toggle}>
+                <DropdownToggle caret>Language</DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>C++</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Python</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Java</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Javascript</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </Col>
+          </Row>
+        </Card>
+      </Container>
+    </div>
   );
 }
 
