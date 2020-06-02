@@ -16,9 +16,15 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { programmingLanguages } from "./constants";
 function App() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpenLanguage, setDropdownOpenLanguage] = useState(false);
+  const [dropdownOpenType1, setDropdownOpenType1] = useState(false);
+  const [dropdownOpenType2, setDropdownOpenType2] = useState(false);
 
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+  const toggleLanguage = () => setDropdownOpenLanguage(prevState => !prevState);
+
+  const toggleType1 = () => setDropdownOpenType1(prevState => !prevState);
+
+  const toggleType2 = () => setDropdownOpenType2(prevState => !prevState);
   return (
     <div>
       <Row>
@@ -37,7 +43,7 @@ function App() {
         <Card body style={{ padding: 50 }}>
           <Row>
             <Col style={{ textAlign: "center" }}>
-              <Dropdown size="md" isOpen={dropdownOpen} toggle={toggle}>
+              <Dropdown size="md" isOpen={dropdownOpenLanguage} toggle={toggleLanguage}>
                 <DropdownToggle caret>Language</DropdownToggle>
                 <DropdownMenu>
                   {programmingLanguages.map((programmingLanguage, index) => {
@@ -63,7 +69,7 @@ function App() {
 
           <Row style={{ marginTop: 20 }}>
             <Col xs="6" style={{ textAlign: "center" }}>
-              <Dropdown size="md" isOpen={dropdownOpen} toggle={toggle}>
+              <Dropdown size="md" isOpen={dropdownOpenType1} toggle={toggleType1}>
                 <DropdownToggle caret>From</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>C++</DropdownItem>
@@ -77,7 +83,7 @@ function App() {
               </Dropdown>
             </Col>
             <Col xs="6" style={{ textAlign: "center" }}>
-              <Dropdown size="md" isOpen={dropdownOpen} toggle={toggle}>
+              <Dropdown size="md" isOpen={dropdownOpenType2} toggle={toggleType2}>
                 <DropdownToggle caret>To</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>C++</DropdownItem>
