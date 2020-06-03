@@ -11,10 +11,11 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Jumbotron
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { programmingLanguages } from "./constants";
+import { programmingLanguages, dataTypes } from "./constants";
 function App() {
   const [dropdownOpenLanguage, setDropdownOpenLanguage] = useState(false);
   const [dropdownOpenType1, setDropdownOpenType1] = useState(false);
@@ -98,6 +99,12 @@ function App() {
             </Col>
           </Row>
         </Card>
+      </Container>
+
+      <Container fluid="sm" style={{ marginTop: 40 }}>
+        <Jumbotron body style={{ padding: 50, textAlign: "center" }}>
+          <h1 className="display-4">Hello, world!</h1>
+        </Jumbotron>
       </Container>
     </div>
   );
