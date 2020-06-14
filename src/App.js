@@ -11,8 +11,7 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  Jumbotron
+  DropdownItem
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CodeBlock, atomOneLight, atomOneDark } from "react-code-blocks";
@@ -40,23 +39,31 @@ function App() {
   };
 
   return (
-    <div style={{ backgroundColor: lightTheme ? "white" : "#343a40", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: lightTheme ? "white" : "#282D33", minHeight: "100vh" }}>
       <Row>
         <Col>
           <Navbar color={lightTheme ? "light" : "dark"} light expand="md">
             <NavbarBrand href="/" style={{ color: lightTheme ? "black" : "white" }}>
-              Convert this to that
+              Convert types
             </NavbarBrand>
             <Nav className="mr-auto" navbar />
-            <Button onClick={toggleTheme} style={{ color: lightTheme ? "black" : "white" }}>
+            <Button onClick={toggleTheme} style={{ color: lightTheme ? "#282E32" : "white" }}>
               <FontAwesomeIcon icon={["fas", "adjust"]} />
             </Button>
           </Navbar>
         </Col>
       </Row>
 
-      <Container fluid="sm" style={{ marginTop: 40 }}>
-        <Card body style={{ padding: 50 }}>
+      <Container fluid="sm">
+        <Card
+          body
+          fluid="sm"
+          style={{
+            marginTop: 40,
+            padding: 50,
+            backgroundColor: lightTheme ? "#F8F9FA" : "#343B3F"
+          }}
+        >
           <Row>
             <Col style={{ display: "flex", justifyContent: "center" }}>
               <Dropdown size="md" isOpen={dropdownOpenLanguage} toggle={toggleLanguage}>
@@ -103,14 +110,24 @@ function App() {
             </Col>
           </Row>
           <Row style={{ marginTop: 20 }}>
-            <Col xs="6" style={{ textAlign: "center" }}>
+            <Col xs="6" style={{ display: "flex", justifyContent: "center" }}>
               <Dropdown
                 disabled={selectedLanguage === "Language"}
                 size="md"
                 isOpen={dropdownOpenType1}
                 toggle={toggleType1}
               >
-                <DropdownToggle caret>{selectedDataType1}</DropdownToggle>
+                <DropdownToggle
+                  caret
+                  style={{
+                    minWidth: "130px",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }}
+                >
+                  {selectedDataType1}
+                </DropdownToggle>
                 {selectedLanguage === "Language" ? (
                   ""
                 ) : (
@@ -145,14 +162,24 @@ function App() {
                 )}
               </Dropdown>
             </Col>
-            <Col xs="6" style={{ textAlign: "center" }}>
+            <Col xs="6" style={{ display: "flex", justifyContent: "center" }}>
               <Dropdown
                 disabled={selectedLanguage === "Language"}
                 size="md"
                 isOpen={dropdownOpenType2}
                 toggle={toggleType2}
               >
-                <DropdownToggle caret>{selectedDataType2}</DropdownToggle>
+                <DropdownToggle
+                  caret
+                  style={{
+                    minWidth: "130px",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }}
+                >
+                  {selectedDataType2}
+                </DropdownToggle>
                 {selectedLanguage === "Language" ? (
                   ""
                 ) : (
@@ -190,13 +217,18 @@ function App() {
           </Row>
         </Card>
       </Container>
-      {console.log({
-        lang: selectedLanguage,
-        from: selectedDataType1,
-        to: selectedDataType2
-      })}
+
       <Container fluid="sm" style={{ marginTop: 40 }}>
-        <Jumbotron style={{ minHeight: "20vh" }}>
+        <Card
+          body
+          fluid="sm"
+          style={{
+            minHeight: "20vh",
+            marginTop: 40,
+            padding: 50,
+            backgroundColor: lightTheme ? "#F8F9FA" : "#343B3F"
+          }}
+        >
           {selectedLanguage !== "Language" &&
           selectedDataType1 !== "From" &&
           selectedDataType2 !== "To" ? (
@@ -210,7 +242,7 @@ function App() {
           ) : (
             ""
           )}
-        </Jumbotron>
+        </Card>
       </Container>
     </div>
   );
