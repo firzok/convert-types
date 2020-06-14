@@ -1,3 +1,4 @@
+import ReactGA from "react-ga";
 import React, { useState } from "react";
 import {
   Navbar,
@@ -38,6 +39,8 @@ function App() {
     }
     setSelectedLanguage(language);
   };
+  ReactGA.initialize("UA-169345408-1");
+  ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
     <div style={{ backgroundColor: theme === "light" ? "white" : "#282D33", minHeight: "100vh" }}>
