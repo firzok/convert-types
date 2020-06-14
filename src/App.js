@@ -16,6 +16,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CodeBlock, atomOneLight, atomOneDark } from "react-code-blocks";
 import { programmingLanguages, dataTypes, conversions } from "./constants";
+import useDarkMode from "./DarkMode";
+
 function App() {
   const [dropdownOpenLanguage, setDropdownOpenLanguage] = useState(false);
   const [dropdownOpenType1, setDropdownOpenType1] = useState(false);
@@ -23,12 +25,11 @@ function App() {
   const [selectedLanguage, setSelectedLanguage] = useState("Language");
   const [selectedDataType1, setSelectedDataType1] = useState("From");
   const [selectedDataType2, setSelectedDataType2] = useState("To");
-  const [lightTheme, setlightTheme] = useState(true);
 
   const toggleLanguage = () => setDropdownOpenLanguage(prevState => !prevState);
   const toggleType1 = () => setDropdownOpenType1(prevState => !prevState);
   const toggleType2 = () => setDropdownOpenType2(prevState => !prevState);
-  const toggleTheme = () => setlightTheme(prevState => !prevState);
+  const [theme, toggleTheme] = useDarkMode();
 
   const changeLanguage = language => {
     if (selectedLanguage !== "Language") {
@@ -39,15 +40,18 @@ function App() {
   };
 
   return (
-    <div style={{ backgroundColor: lightTheme ? "white" : "#282D33", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: theme === "light" ? "white" : "#282D33", minHeight: "100vh" }}>
       <Row>
         <Col>
-          <Navbar color={lightTheme ? "light" : "dark"} light expand="md">
-            <NavbarBrand href="/" style={{ color: lightTheme ? "black" : "white" }}>
+          <Navbar color={theme === "light" ? "light" : "dark"} light expand="md">
+            <NavbarBrand href="/" style={{ color: theme === "light" ? "black" : "white" }}>
               Convert types
             </NavbarBrand>
             <Nav className="mr-auto" navbar />
-            <Button onClick={toggleTheme} style={{ color: lightTheme ? "#282E32" : "white" }}>
+            <Button
+              onClick={toggleTheme}
+              style={{ color: theme === "light" ? "#282E32" : "white" }}
+            >
               <FontAwesomeIcon icon={["fas", "adjust"]} />
             </Button>
           </Navbar>
@@ -61,7 +65,7 @@ function App() {
           style={{
             marginTop: 40,
             padding: 50,
-            backgroundColor: lightTheme ? "#F8F9FA" : "#343B3F"
+            backgroundColor: theme === "light" ? "#F8F9FA" : "#343B3F"
           }}
         >
           <Row>
@@ -226,7 +230,7 @@ function App() {
             minHeight: "20vh",
             marginTop: 40,
             padding: 50,
-            backgroundColor: lightTheme ? "#F8F9FA" : "#343B3F"
+            backgroundColor: theme === "light" ? "#F8F9FA" : "#343B3F"
           }}
         >
           {selectedLanguage !== "Language" &&
@@ -236,7 +240,7 @@ function App() {
               style={{ margin: "30px 10px 30px 10px" }}
               text={conversions[selectedLanguage][selectedDataType1][selectedDataType2]}
               language={"c"}
-              theme={lightTheme ? atomOneLight : atomOneDark}
+              theme={theme === "light" ? atomOneLight : atomOneDark}
               showLineNumbers={false}
             />
           ) : (
