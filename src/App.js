@@ -24,25 +24,31 @@ function App() {
   const [selectedLanguage, setSelectedLanguage] = useState("Language");
   const [selectedDataType1, setSelectedDataType1] = useState("From");
   const [selectedDataType2, setSelectedDataType2] = useState("To");
+  const [lightTheme, setlightTheme] = useState(true);
 
   const toggleLanguage = () => setDropdownOpenLanguage(prevState => !prevState);
   const toggleType1 = () => setDropdownOpenType1(prevState => !prevState);
   const toggleType2 = () => setDropdownOpenType2(prevState => !prevState);
+  const toggleTheme = () => setlightTheme(prevState => !prevState);
 
-  let code = `int main(void)
-  {
-    printf("Hello World!");
-    return EXIT_SUCCESS;
-  }
-  `;
+  const changeLanguage = language => {
+    if (selectedLanguage !== "Language") {
+      setSelectedDataType1("From");
+      setSelectedDataType2("To");
+    }
+    setSelectedLanguage(language);
+  };
+
   return (
-    <div>
+    <div style={{ backgroundColor: lightTheme ? "white" : "#343a40", minHeight: "100vh" }}>
       <Row>
         <Col>
-          <Navbar color="light" light expand="md">
-            <NavbarBrand href="/">Convert this to that</NavbarBrand>
+          <Navbar color={lightTheme ? "light" : "dark"} light expand="md">
+            <NavbarBrand href="/" style={{ color: lightTheme ? "black" : "white" }}>
+              Convert this to that
+            </NavbarBrand>
             <Nav className="mr-auto" navbar />
-            <Button>
+            <Button onClick={toggleTheme} style={{ color: lightTheme ? "black" : "white" }}>
               <FontAwesomeIcon icon={["fas", "adjust"]} />
             </Button>
           </Navbar>
@@ -72,7 +78,7 @@ function App() {
                         <span key={index}>
                           <DropdownItem
                             value={programmingLanguage}
-                            onClick={e => setSelectedLanguage(e.currentTarget.value)}
+                            onClick={e => changeLanguage(e.currentTarget.value)}
                           >
                             {programmingLanguage}
                           </DropdownItem>
@@ -83,7 +89,7 @@ function App() {
                         <span key={index}>
                           <DropdownItem
                             value={programmingLanguage}
-                            onClick={e => setSelectedLanguage(e.currentTarget.value)}
+                            onClick={e => changeLanguage(e.currentTarget.value)}
                           >
                             {programmingLanguage}
                           </DropdownItem>
@@ -190,14 +196,15 @@ function App() {
         to: selectedDataType2
       })}
       <Container fluid="sm" style={{ marginTop: 40 }}>
-        <Jumbotron style={{ padding: 10 }}>
+        <Jumbotron style={{ minHeight: "20vh" }}>
           {selectedLanguage !== "Language" &&
           selectedDataType1 !== "From" &&
           selectedDataType2 !== "To" ? (
             <CodeBlock
+              style={{ margin: "30px 10px 30px 10px" }}
               text={conversions[selectedLanguage][selectedDataType1][selectedDataType2]}
               language={"c"}
-              theme={atomOneLight}
+              theme={lightTheme ? atomOneLight : atomOneDark}
               showLineNumbers={false}
             />
           ) : (
