@@ -1,4 +1,4 @@
-const programmingLanguages = ["C", "C++", "C#", "Java", "JavaScript", "Objective-C", "Python"];
+const programmingLanguages = ["C", "C++", "C#", "Java", "JavaScript", "Python"];
 
 const dataTypes = {
   C: [
@@ -37,10 +37,10 @@ const dataTypes = {
     "ulong",
     "ushort"
   ],
-  Java: ["boolean", "char", "byte", "short", "int", "long", "float", "double"],
+  Java: ["boolean", "char", "byte", "short", "String", "int", "long", "float", "double"],
   JavaScript: ["Number", "String", "Boolean"],
   "Objective-C": [
-    "BOOL",
+    "bool",
     "char",
     "short int",
     "int",

@@ -62,6 +62,9 @@ function App() {
       </Row>
 
       <Container fluid="sm">
+        <h4 style={{ paddingTop: 40, color: theme === "light" ? "black" : "white" }}>
+          Convert all data types for all programming languages.
+        </h4>
         <Card
           body
           fluid="sm"
@@ -226,6 +229,22 @@ function App() {
       </Container>
 
       <Container fluid="sm" style={{ marginTop: 40 }}>
+        {selectedLanguage !== "Language" &&
+        selectedDataType1 !== "From" &&
+        selectedDataType2 !== "To" ? (
+          <h4
+            style={{
+              padding: "10px",
+              color: theme === "light" ? "black" : "white",
+              textAlign: "center"
+            }}
+          >
+            Convert <strong>{selectedDataType1}</strong> to <strong>{selectedDataType2}</strong> in{" "}
+            <strong>{selectedLanguage}</strong>
+          </h4>
+        ) : (
+          <h4 style={{ padding: "10px", color: theme === "light" ? "black" : "white" }}> </h4>
+        )}
         <Card
           body
           fluid="sm"
