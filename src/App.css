@@ -26,3 +26,6 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
+.code {
+  text-align: initial !important;
+}

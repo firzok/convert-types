@@ -276,13 +276,15 @@ function App() {
           {selectedLanguage !== "Language" &&
           selectedDataType1 !== "From" &&
           selectedDataType2 !== "To" ? (
-            <CodeBlock
-              style={{ margin: "30px 10px 30px 10px" }}
-              text={conversions[selectedLanguage][selectedDataType1][selectedDataType2]}
-              language={"c"}
-              theme={theme === "light" ? atomOneLight : atomOneDark}
-              showLineNumbers={false}
-            />
+            <span className="code">
+              <CodeBlock
+                style={{ margin: "30px 10px 30px 10px" }}
+                text={conversions[selectedLanguage][selectedDataType1][selectedDataType2]}
+                language={"c"}
+                theme={theme === "light" ? atomOneLight : atomOneDark}
+                showLineNumbers={false}
+              />
+            </span>
           ) : (
             ""
           )}
