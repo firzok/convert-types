@@ -19,6 +19,17 @@ import { CodeBlock, atomOneLight, atomOneDark } from "react-code-blocks";
 import { programmingLanguages, dataTypes, conversions } from "./constants";
 import useDarkMode from "./DarkMode";
 
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TwitterShareButton,
+  TwitterIcon
+} from "react-share";
+
+import "./App.css";
+
 function App() {
   const [dropdownOpenLanguage, setDropdownOpenLanguage] = useState(false);
   const [dropdownOpenType1, setDropdownOpenType1] = useState(false);
@@ -43,7 +54,13 @@ function App() {
   ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
-    <div style={{ backgroundColor: theme === "light" ? "white" : "#282D33", minHeight: "100vh" }}>
+    <div
+      className="App"
+      style={{
+        backgroundColor: theme === "light" ? "white" : "#282D33",
+        minHeight: "100vh"
+      }}
+    >
       <Row>
         <Col>
           <Navbar color={theme === "light" ? "light" : "dark"} light expand="md">
@@ -65,6 +82,7 @@ function App() {
         <h4 style={{ paddingTop: 40, color: theme === "light" ? "black" : "white" }}>
           Convert all data types for all programming languages.
         </h4>
+
         <Card
           body
           fluid="sm"
@@ -270,6 +288,34 @@ function App() {
           )}
         </Card>
       </Container>
+      <div className="share-menu">
+        <Row>
+          <Col>
+            <FacebookShareButton
+              className="share-menu__item grow"
+              url={"https://www.converttypes.com/"}
+            >
+              <FacebookIcon size={32} round={true} />
+            </FacebookShareButton>
+          </Col>
+          <Col>
+            <TwitterShareButton
+              className="share-menu__item grow"
+              url={"https://www.converttypes.com/"}
+            >
+              <TwitterIcon size={32} round={true} />
+            </TwitterShareButton>
+          </Col>
+          <Col>
+            <LinkedinShareButton
+              className="share-menu__item grow"
+              url={"https://www.converttypes.com/"}
+            >
+              <LinkedinIcon size={32} round={true} />
+            </LinkedinShareButton>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 }
