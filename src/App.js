@@ -30,6 +30,25 @@ import {
 
 import "./App.css";
 
+function facebookShare() {
+  ReactGA.event({
+    category: "Share",
+    action: "Facebook"
+  });
+}
+function twitterShare() {
+  ReactGA.event({
+    category: "Share",
+    action: "Twitter"
+  });
+}
+function linkedInShare() {
+  ReactGA.event({
+    category: "Share",
+    action: "LinkedIn"
+  });
+}
+
 function App() {
   const [dropdownOpenLanguage, setDropdownOpenLanguage] = useState(false);
   const [dropdownOpenType1, setDropdownOpenType1] = useState(false);
@@ -298,6 +317,8 @@ function App() {
               url={"https://www.converttypes.com/"}
               quote="Found a cool new website to convert almost all data types from a variety of programming languages. Do check it out and share with other."
               hashtag="#converttypes.com"
+              id="facebook"
+              beforeOnClick={facebookShare}
             >
               <FacebookIcon size={32} round={true} />
             </FacebookShareButton>
@@ -308,6 +329,8 @@ function App() {
               url={"https://www.converttypes.com/"}
               title="Found a cool new website to convert almost all data types from a variety of programming languages. RT and share it with others."
               hashtags={["converttypes", "datatypeconversion"]}
+              id="twitter"
+              beforeOnClick={twitterShare}
             >
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>
@@ -316,6 +339,8 @@ function App() {
             <LinkedinShareButton
               className="share-menu__item grow"
               url={"https://www.converttypes.com/"}
+              id="linkedin"
+              beforeOnClick={linkedInShare}
             >
               <LinkedinIcon size={32} round={true} />
             </LinkedinShareButton>
