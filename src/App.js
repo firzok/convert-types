@@ -296,6 +296,8 @@ function App() {
             <FacebookShareButton
               className="share-menu__item grow"
               url={"https://www.converttypes.com/"}
+              quote="Found a cool new website to convert almost all data types from a variety of programming languages. Do check it out and share with other."
+              hashtag="#converttypes.com"
             >
               <FacebookIcon size={32} round={true} />
             </FacebookShareButton>
@@ -304,6 +306,8 @@ function App() {
             <TwitterShareButton
               className="share-menu__item grow"
               url={"https://www.converttypes.com/"}
+              title="Found a cool new website to convert almost all data types from a variety of programming languages. RT and share it with others."
+              hashtags={["converttypes", "datatypeconversion"]}
             >
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>
