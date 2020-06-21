@@ -29,3 +29,21 @@
 .code {
   text-align: initial !important;
 }
+
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin-top: 304px;
+}
+
+.footer,
+.page-wrap:after {
+  height: auto;
+}
+
+.top-conversions {
+  font-size: 0.5rem;
+  text-align: left;
+}
