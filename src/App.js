@@ -347,6 +347,94 @@ function App() {
           </Col>
         </Row>
       </div>
+
+      <footer
+        style={{
+          backgroundColor: theme === "light" ? "#F8F9FA" : "#343B3F",
+          color: theme === "light" ? "#343B3F" : "#F8F9FA"
+        }}
+        class="footer"
+      >
+        <h5>Top Conversions</h5>
+        <Row>
+          <Col>
+            <ul class="top-conversions">
+              <li>
+                Convert <b>int</b> to <b>long</b> in <b>C#</b>
+              </li>
+              <li>
+                Convert <b>long</b> to <b>int</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>long</b> to <b>int</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>long</b> to <b>int</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>int</b> to <b>double</b> in <b>C#</b>
+              </li>
+              <li>
+                Convert <b>int</b> to <b>short</b> in <b>C#</b>
+              </li>
+              <li>
+                Convert <b>double</b> to <b>float</b> in <b>C#</b>
+              </li>
+            </ul>
+          </Col>
+          <Col>
+            <ul class="top-conversions">
+              <li>
+                Convert <b>long</b> to <b>int</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>int</b> to <b>decimal</b> in <b>C#</b>
+              </li>
+              <li>
+                Convert <b>int</b> to <b>long</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>int</b> to <b>long</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>int</b> to <b>long</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>Long</b> to <b>String</b> in <b>VB</b>
+              </li>
+              <li>
+                Convert <b>unsigned char</b> to <b>int</b> in <b>C</b>
+              </li>
+            </ul>
+          </Col>
+          <Col>
+            <ul class="top-conversions">
+              <li>
+                Convert <b>bool</b> to <b>str</b> in <b>Python</b>
+              </li>
+              <li>
+                Convert <b>char*</b> to <b>int</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>unsigned char</b> to <b>int</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>unsigned char</b> to <b>int</b> in <b>C</b>
+              </li>
+              <li>
+                Convert <b>string</b> to <b>long</b> in <b>C#</b>
+              </li>
+              <li>
+                Convert <b>Byte()</b> to <b>String</b> in <b>VB.net</b>
+              </li>
+            </ul>
+          </Col>
+        </Row>
+
+        <a href="/" style={{ color: theme === "light" ? "black" : "white" }}>
+          © 2020 ConvertTypes
+        </a>
+      </footer>
     </div>
   );
 }
